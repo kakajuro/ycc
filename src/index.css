@@ -1,0 +1,8 @@
+body {
+  background: linear-gradient(90deg, rgba(97,164,249,1) 0%, rgb(35, 135, 228) 51%, rgba(13,141,167,1) 100%);
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
