@@ -1,13 +1,12 @@
 import React from 'react';
-import { AiOutlineGithub } from 'react-icons/ai';
 
-import './ghIcon.css';
+import { AiOutlineGithub } from 'react-icons/ai';
+import './styles/ghIcon.css';
 
 export default function GHIcon() {
 
   const openRepo = () => {
-    // window.open(URL, '_blank');
-    console.log("Open Repo Here");
+    console.log("open repo here");
   }
 
   return (

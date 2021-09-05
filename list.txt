@@ -1,1 +1,9 @@
-+ style buttons
+-(dl folder set as state in app file useeffect []) zustand?
+--fix thumbnail previewer
+-- fix ghIcon
+-- embed youtube thumbnails api
+
++ fix bottom buttons 
++ link to ytdl api
+
+++ hook to file system (electron process)
