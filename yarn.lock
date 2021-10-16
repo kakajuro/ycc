@@ -2923,6 +2923,13 @@ axios@^0.19.2:
   dependencies:
     follow-redirects "1.5.10"
 
+axios@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
+  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
+  dependencies:
+    follow-redirects "^1.10.0"
+
 axobject-query@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
@@ -5880,6 +5887,11 @@ follow-redirects@^1.0.0:
   integrity sha512-4eyLK6s6lH32nOvLLwlIOnr9zrL8Sm+OvW4pVTJNoXeGzYIkHVf+pADQi+OJ0E67hiuSLezPVPyBcIZO50TmmQ==
   dependencies:
     debug "^3.0.0"
+
+follow-redirects@^1.10.0:
+  version "1.14.4"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.4.tgz#838fdf48a8bbdd79e52ee51fb1c94e3ed98b9379"
+  integrity sha512-zwGkiSXC1MUJG/qmeIFH2HBJx9u0V46QGUe3YR1fXG8bXQxq7fLj0RjLZQ5nubr9qNJUZrH+xUcwXEoXNpfS+g==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -13232,3 +13244,10 @@ youtube-thumbnails@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/youtube-thumbnails/-/youtube-thumbnails-1.1.0.tgz#9c87b22d4837e1c3dc65bd08ecd2287a425ee68d"
   integrity sha512-OLZLvMqQJHcJKAAqES8IEWwu3T4WXnP2EjB9y7IaghcHBS3yevcRzNP3jvBn7nu0ePoM3pb5/CZuQtZ626O0lQ==
+
+youtube-video-exists@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/youtube-video-exists/-/youtube-video-exists-0.1.2.tgz#d992f832045a50679f63f6ffba175728efa87ce2"
+  integrity sha512-/CZKcafXiaQ1vNMvzC2jdNJH+QUOR+qBLdz6zoIytgqNgqWCh5HeJUk2dZqEpmvYVHdGgC+vxmIXkiwmVkrnlQ==
+  dependencies:
+    axios "^0.20.0"

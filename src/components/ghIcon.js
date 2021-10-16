@@ -3,10 +3,12 @@ import React from 'react';
 import { AiOutlineGithub } from 'react-icons/ai';
 import './styles/ghIcon.css';
 
+const shell = window.require('electron').shell
+
 export default function GHIcon() {
 
   const openRepo = () => {
-    console.log("open repo here");
+    shell.openExternal("https://github.com/swishyy/ycc")
   }
 
   return (

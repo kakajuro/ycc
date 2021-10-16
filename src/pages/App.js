@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Spacer from 'react-spacer';
 
 import GHIcon from '../components/ghIcon';
+import validationText from '../components/validationText';
 import ThumbnailPreviewer from '../components/thumbnailPreviewer';
 
 import matchYoutubeUrl from '../utils/isYoutubeLink'
@@ -13,13 +14,13 @@ import '../components/styles/eltStyles.css';
 
 const { ipcRenderer } = window.require('electron');
 const youthumb = require('youtube-thumbnails');
+const videoFind = require('youtube-video-exists');
+
 
 function App() {
 
   const [link, setLink] = useState("");
-  const [isText, setIsText] = useState(false);
   const [finalLink, setFinalLink] = useState("");
-  const [videoExists, setVideoExists] = useState(false);
   const [videoRes, setVideoRes] = useState();
 
   const [DLPath, setDLPath] = useState("");
@@ -59,19 +60,12 @@ function App() {
     setLink(e.target.value);
 
     if (e.target.value.length > 0) {
-      setIsText(true);
 
       var videoFound = matchYoutubeUrl(e.target.value);
 
       if (videoFound) {
-        setVideoExists(true);
         setFinalLink(e.target.value);
-        
-      } else {
-        setVideoExists(false);
       }
-    } else {
-      setIsText(false);
     }
   }
 
@@ -79,11 +73,20 @@ function App() {
     var videoFound = matchYoutubeUrl(link);
 
     if (videoFound) {
-      setVideoExists(true);
       setFinalLink(link);
-      
+
+      var id = link.split("v=");
+
+      videoFind.getVideoInfo(id).then(val => {
+        if (val.existing && val.private) console.log('Video is private!')
+        else if (!val.existing) console.log("Video not exist")
+        else {
+          console.log("Exists just finee")
+        }
+      });
+
     } else {
-      setVideoExists(false);
+      console.log("unrecognised url")
     }
   }
 
@@ -115,31 +118,28 @@ function App() {
         <Spacer height="10px" />
       </div>
       <Spacer height="10px" />
-      {/* {videoExists ? <ThumbnailPreviewer link={finalLink} /> : <div/>} */}
-      {isText ? <p>sajdkasd</p> : <div/>}
-      {videoExists && isText ? <h1>YESS</h1> : <div></div>}
       <Spacer height="20px" />
       <div className="options-section">
         <div className="options-grid">
           <div className="button-section">
             <h1 className="sub-header unselectable">Format:</h1>
-            {MP3Selected ? 
-              <button className="btn-selected" onClick={() => changeFormatSelect('mp3')}>MP3</button> : 
+            {MP3Selected ?
+              <button className="btn-selected" onClick={() => changeFormatSelect('mp3')}>MP3</button> :
               <button className="btn" onClick={() => changeFormatSelect('mp3')}>MP3</button>
             }
-            {MP4Selected ? 
-              <button className="btn-selected" onClick={() => changeFormatSelect('mp4')}>MP4</button> : 
+            {MP4Selected ?
+              <button className="btn-selected" onClick={() => changeFormatSelect('mp4')}>MP4</button> :
               <button className="btn" onClick={() => changeFormatSelect('mp4')}>MP4</button>
             }
           </div>
           <div className="button-section">
             <h1 className="sub-header unselectable">Quality:</h1>
-            {highSelected ? 
-              <button className="btn-selected" onClick={() => changeQualtySelect('high')}>High</button> : 
+            {highSelected ?
+              <button className="btn-selected" onClick={() => changeQualtySelect('high')}>High</button> :
               <button className="btn" onClick={() => changeQualtySelect('high')}>High</button>
             }
-            {lowSelected ? 
-              <button className="btn-selected" onClick={() => changeQualtySelect('low')}>Low</button> : 
+            {lowSelected ?
+              <button className="btn-selected" onClick={() => changeQualtySelect('low')}>Low</button> :
               <button className="btn" onClick={() => changeQualtySelect('low')}>Low</button>
             }
           </div>
